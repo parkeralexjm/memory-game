@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import './App.css';
 import clicked from "./components/Clicked";
 import importImages from "./components/ImportImages";
+import shuffle from "./components/Utility";
 
 const imagesPNG = importImages(require.context('./images', false, /\.(png)$/))
 
@@ -12,7 +13,6 @@ const App = () => {
   });
   // Initialise the tracker for image clicking
   const [isClicked, setClicked] = useState(clicked)
-  //const wrapper = document.getElementById('wrapper');
   
   useEffect (() => {
     // If the score is equal to or above the top score then update the top score
@@ -49,10 +49,10 @@ const App = () => {
   
   // Go to images.name or something to get the image for the svg
   return (
-        <div id='wrapper'>
+    <div id='wrapper'>
       <pre>Score: {scores.score}</pre>
       <pre>Top Score: {scores.topScore}</pre>
-      <pre>{imagesPNG.map(item => (
+      <pre>{shuffle(imagesPNG).map(item => (
         <img draggable="false" name={item.name} src={item.image} alt={item.name} onClick={scoreIncrease}></img>
       ))}
       </pre>
