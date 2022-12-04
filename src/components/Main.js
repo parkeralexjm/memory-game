@@ -46,8 +46,8 @@ const Main = () => {
         // Set onclick not to trigger while sound is active
         audioActive = 0;
         setTimeout(function() {
-          audioActive = 1;
-          loseMessage.classList.toggle('overlay-on');
+          audioActive = 1
+          loseMessage.classList.toggle('overlay-on')
         }, 3200);
         
       } else {
