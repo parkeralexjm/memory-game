@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "/memory-game/static/css/main.b03fd44d.css",
-    "main.js": "/memory-game/static/js/main.e8724560.js",
+    "main.css": "/memory-game/static/css/main.712484cc.css",
+    "main.js": "/memory-game/static/js/main.e24eae4c.js",
     "static/media/Header.png": "/memory-game/static/media/Header.9d44c5670953c63ac1b4.png",
+    "static/media/lose.mp3": "/memory-game/static/media/lose.9f27cd1f9558568422e7.mp3",
     "static/media/Peach rose gold.png": "/memory-game/static/media/Peach rose gold.5422f118c757477a0923.png",
     "static/media/Peach.png": "/memory-game/static/media/Peach.e0f9267300f125f3c52a.png",
     "static/media/Daisy.png": "/memory-game/static/media/Daisy.e383b2aed69bbd0d7855.png",
@@ -45,11 +46,11 @@
     "static/media/Shy red.png": "/memory-game/static/media/Shy red.dfa615fe88a30df788a7.png",
     "static/media/Koopa.png": "/memory-game/static/media/Koopa.d27d9121635e2697edfa.png",
     "index.html": "/memory-game/index.html",
-    "main.b03fd44d.css.map": "/memory-game/static/css/main.b03fd44d.css.map",
-    "main.e8724560.js.map": "/memory-game/static/js/main.e8724560.js.map"
+    "main.712484cc.css.map": "/memory-game/static/css/main.712484cc.css.map",
+    "main.e24eae4c.js.map": "/memory-game/static/js/main.e24eae4c.js.map"
   },
   "entrypoints": [
-    "static/css/main.b03fd44d.css",
-    "static/js/main.e8724560.js"
+    "static/css/main.712484cc.css",
+    "static/js/main.e24eae4c.js"
   ]
 }
