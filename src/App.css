@@ -81,8 +81,8 @@ img {
   border: 2px solid maroon;
   border-radius: 5px;
   color: var(--main-color-light);
-  padding: 20px;
   font-size: 2rem;
+  padding: 20px;
   visibility: hidden;
   opacity: 0;
 }

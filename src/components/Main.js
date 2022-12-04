@@ -35,10 +35,7 @@ const Main = () => {
     // Lose condition
     if (audioActive) {  
       if (isClicked.includes(currentName)) {
-        setScore(prevScore => ({
-            ...prevScore,
-            score: 0
-        }));
+
         const loseMessage = document.getElementById('overlay')
         setClicked(clicked)
         audio.volume = 0.4
@@ -49,6 +46,10 @@ const Main = () => {
         setTimeout(function() {
           audioActive = 1
           loseMessage.classList.toggle('overlay-on')
+          setScore(prevScore => ({
+            ...prevScore,
+            score: 0
+        }));
         }, 3200);
         
       } else {
@@ -74,8 +75,9 @@ const Main = () => {
       <div className="imageDisplay">{shuffle(imagesPNG).map(item => (
         <img draggable="false" className="imageTile" name={item.name} src={item.image} alt={item.name} onClick={scoreIncrease}></img>
       ))}
-      </div>
       <Overlay/>
+      </div>
+      
     </div>
   )
 }
