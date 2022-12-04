@@ -74,3 +74,20 @@ img {
   border: 2px solid var(--main-color-dark);
   border-radius: 8px;
 }
+
+#overlay {
+  position: absolute;
+  background-color: var(--main-color-dark);
+  border: 2px solid maroon;
+  border-radius: 5px;
+  color: var(--main-color-light);
+  padding: 20px;
+  font-size: 2rem;
+  visibility: hidden;
+  opacity: 0;
+}
+
+#overlay.overlay-on {
+  visibility: visible;
+  opacity: 1;
+}

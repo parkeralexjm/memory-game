@@ -2,8 +2,13 @@ import React, { useEffect, useState } from "react";
 import clicked from "./Clicked";
 import importImages from "./ImportImages";
 import shuffle from "./Utility";
+import loseSong from "../assets/lose.mp3";
+import Overlay from "./Overlay";
 
-const imagesPNG = importImages(require.context('../images', false, /\.(png)$/))
+const imagesPNG = importImages(require.context('../assets/images', false, /\.(png)$/))
+const audio = new Audio(loseSong)
+const loseMessage = document.getElementById('overlay')
+let audioActive = 1;
 
 const Main = () => {
   const [scores, setScore] = useState({
@@ -27,22 +32,35 @@ const Main = () => {
   // Increase the score on button click (add a conditional to check if the click)
   const scoreIncrease = (event) => {
     const currentName = event.currentTarget.name
-    if (isClicked.includes(currentName)) {
-      setScore(prevScore => ({
-          ...prevScore,
-          score: 0
-      }));
-      setClicked(clicked)
-    } else {
-    console.log(currentName)
-    setClicked(prevClicked => [
-      ...prevClicked, 
-      currentName
-    ])
+    // Lose condition
+    if (audioActive) {  
+      if (isClicked.includes(currentName)) {
+        setScore(prevScore => ({
+            ...prevScore,
+            score: 0
+        }));
+        setClicked(clicked)
+        audio.volume = 0.4
+        audio.play()
+        loseMessage.classList.toggle('overlay-on')
+        // Set onclick not to trigger while sound is active
+        audioActive = 0;
+        setTimeout(function() {
+          audioActive = 1;
+          loseMessage.classList.toggle('overlay-on');
+        }, 3200);
+        
+      } else {
+      console.log(currentName)
+      setClicked(prevClicked => [
+        ...prevClicked, 
+        currentName
+      ])
     setScore(prevScore => ({
       ...prevScore,
       score: scores.score + 1
     }))
+    }
   }
 }
   
@@ -56,6 +74,7 @@ const Main = () => {
         <img draggable="false" className="imageTile" name={item.name} src={item.image} alt={item.name} onClick={scoreIncrease}></img>
       ))}
       </div>
+      <Overlay/>
     </div>
   )
 }
