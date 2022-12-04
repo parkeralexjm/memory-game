@@ -7,7 +7,7 @@ import Overlay from "./Overlay";
 
 const imagesPNG = importImages(require.context('../assets/images', false, /\.(png)$/))
 const audio = new Audio(loseSong)
-const loseMessage = document.getElementById('overlay')
+
 let audioActive = 1;
 
 const Main = () => {
@@ -39,6 +39,7 @@ const Main = () => {
             ...prevScore,
             score: 0
         }));
+        const loseMessage = document.getElementById('overlay')
         setClicked(clicked)
         audio.volume = 0.4
         audio.play()
