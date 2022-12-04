@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import './App.css';
-import images from "./components/Images";
 import clicked from "./components/Clicked";
+import importImages from "./components/ImportImages";
+
+const imagesPNG = importImages(require.context('./images', false, /\.(png)$/))
 
 const App = () => {
   const [scores, setScore] = useState({
     score: 0,
     topScore: 0
   });
-  // Initialise the starting state for the images
-  const [imageTrack, setImageTrack] = useState(images);
   // Initialise the tracker for image clicking
   const [isClicked, setClicked] = useState(clicked)
   //const wrapper = document.getElementById('wrapper');
@@ -27,9 +27,8 @@ const App = () => {
 
   // Increase the score on button click (add a conditional to check if the click)
   const scoreIncrease = (event) => {
-    const currentId = event.currentTarget.id
     const currentName = event.currentTarget.name
-    if (isClicked.includes(imageTrack[currentId - 1].name)) {
+    if (isClicked.includes(currentName)) {
       setScore(prevScore => ({
           ...prevScore,
           score: 0
@@ -47,13 +46,14 @@ const App = () => {
     }))
   }
 }
-
+  
+  // Go to images.name or something to get the image for the svg
   return (
-    <div id='wrapper'>
+        <div id='wrapper'>
       <pre>Score: {scores.score}</pre>
       <pre>Top Score: {scores.topScore}</pre>
-      <pre>{imageTrack.map(item => (
-        <button id={item.id} name={item.name} onClick={scoreIncrease}>{item.name}</button>
+      <pre>{imagesPNG.map(item => (
+        <img draggable="false" name={item.name} src={item.image} alt={item.name} onClick={scoreIncrease}></img>
       ))}
       </pre>
     </div>
